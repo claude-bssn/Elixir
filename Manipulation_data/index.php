@@ -89,7 +89,7 @@ $mostPlayed = getMostPlayed($dataChampions, $dataMatches);
 ?>
 <p>The best range : <?= $bestRange['name'];?> </p>
 
-<p>the weakest : <?= $weakest['name'];?> </p>
+<p>The weakest : <?= $weakest['name'];?> </p>
 
 <p>The last match of "Caitlyn" was the n˚ <?= $lastMatch?></p>
 
