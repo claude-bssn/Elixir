@@ -18,7 +18,8 @@ defmodule MyAppWeb.Router do
 
     get "/", PageController, :index
     get "/hello", HelloController, :index
-    get "/dataset.json", DatasetController, :show
+    get "/hello/:messenger", HelloController, :show
+    get "/dataset.json", DatasetController, :index
 
   end
 
