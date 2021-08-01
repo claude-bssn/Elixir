@@ -1,15 +1,10 @@
 defmodule MyAppWeb.PageController do
   use MyAppWeb, :controller
+  alias MyApp.Characters
 
-  def show(conn, _params) do
-    page = %{title: "foo"}
+  def index(conn, _param) do
 
-    render(conn, "show.json", page: page)
-  end
+    render(conn, "index.html", champions: Characters.fetch_characters["champions"])
 
-  def index(conn, _params) do
-    pages = [%{title: "foo"}, %{title: "bar"}]
-
-    render(conn, "index.json", pages: pages)
   end
 end

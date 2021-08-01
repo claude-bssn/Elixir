@@ -7,7 +7,7 @@ defmodule MyAppWeb.HelloController do
 
   def show(conn, %{"messenger" => messenger})do
 
-    json(conn,%{id: messenger})
+    render(conn, "show.html", messenger: messenger)
 
   end
 end

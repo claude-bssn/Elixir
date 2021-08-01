@@ -23,6 +23,9 @@
     <h2>Help</h2>
     <ul>
       <li>
+  <%= Enum.map(@champions, fn(row)->  %>
+      <pre><%= row["id"] %></pre>
+<% end )%>
         <a href="https://elixirforum.com/c/phoenix-forum">Forum</a>
       </li>
       <li>
