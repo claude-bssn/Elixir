@@ -47,7 +47,9 @@ defmodule MyApp.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:poison, "~> 5.0"},
       {:exconstructor, "~> 1.2.4"},
-      {:httpoison, "~> 1.8"}
+      {:httpoison, "~> 1.8"},
+      {:phoenix_live_view, "~> 0.15.7"},
+      {:floki, ">= 0.30.0", only: :test}
     ]
   end
 

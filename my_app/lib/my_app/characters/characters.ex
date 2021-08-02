@@ -1,6 +1,5 @@
 defmodule MyApp.Characters do
-  # alias MyApp.Characters
-
+alias MyApp.Characters.Champions
   def fetch_characters() do
     response = Application.app_dir(:my_app, "priv/mock_data/dataset.json")
 

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title><%= title() %></title>
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
+    <%= csrf_meta_tag() %>
     <script defer type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </head>
   <body>
@@ -13,10 +14,9 @@
       <section class="container">
         <nav role="navigation">
           <ul>
-            <li><a href="https://hexdocs.pm/phoenix/overview.html">Get Started</a></li>
-            <%= if function_exported?(Routes, :live_dashboard_path, 2) do %>
-              <li><%= link "LiveDashboard", to: Routes.live_dashboard_path(@conn, :home) %></li>
-            <% end %>
+            <li><%= link "Home", to: Routes.page_path(@conn, :index) %> </li>
+            <li><%= link "Hello", to: Routes.hello_path(@conn, :index) %> </li>
+            <li><%= link "Json", to: Routes.dataset_path(@conn, :index) %></li>
           </ul>
         </nav>
         <a href="/hello" class="phx-logo">
@@ -24,9 +24,7 @@
         </a>
       </section>
     </header>
-      <%= render(MyAppWeb.PageView,"test.html", message: "Hello from layout") %>
     <main role="main" class="container">
-     <p>Locale: <%= @locale %></p>
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
       <%= @inner_content %>

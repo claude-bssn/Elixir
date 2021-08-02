@@ -16,7 +16,7 @@ config :my_app, MyAppWeb.Endpoint,
   secret_key_base: "B3LA6aLJILvUEHL52M4uOVwh9fgKjaUz5JA1ITe2rCIKhrdEB+zirw7EQIJGd/OR",
   render_errors: [view: MyAppWeb.ErrorView, accepts: ~w(html json), layout: false],
   pubsub_server: MyApp.PubSub,
-  live_view: [signing_salt: "KpKK5RrS"]
+  live_view: [signing_salt: "O1DaH38aBVzMv6dMxLjEVeMWlIyK+bSW"]
 
 # Configures Elixir's Logger
 config :logger, :console,

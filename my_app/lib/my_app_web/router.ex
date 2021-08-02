@@ -4,10 +4,10 @@ defmodule MyAppWeb.Router do
   pipeline :browser do
     plug :accepts, ["html", "text"]
     plug :fetch_session
-    plug :fetch_flash
+    plug :fetch_live_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
-    plug MyAppWeb.Plugs.Locale, "en"
+    plug :put_root_layout, {MyAppWeb.LayoutView, :app}
   end
 
   pipeline :api do
@@ -18,32 +18,9 @@ defmodule MyAppWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
-    get "/show", PageController, :show
     get "/hello", HelloController, :index
     get "/hello/:messenger", HelloController, :show
-
-    get "/redirect_test", PageController, :redirect_test
     get "/dataset.json", DatasetController, :index
-    # resources "/users", UserController
-    # resources "/reviews", ReviewController
-
-
-  # end
-# scope "/admin", MyAppWeb, as: :admin do
-#   pipe_through :browser
-#   resources "/images", ImageController
-#   resources "/reviews", ReviewController
-#   resources "/users", UserController
-# end
-  # Other scopes may use custom stacks.
-  # scope "/api", MyAppWeb.Api, as: :api do
-  #   pipe_through :api
-  #   scope "/v1", V1, as: :v1 do
-  #     resources "/images", ImageController
-  #     resources "/reviews", ReviewController
-  #     resources "/users", UserController
-
-    # end
 
   end
 
