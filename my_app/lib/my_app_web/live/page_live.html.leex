@@ -1,0 +1,20 @@
+<section class="row">
+  <div class="column">
+    <h2>Champions</h2>
+    <input type="text" placeholder="Search for a Champion">
+    <form phx-change="filter_champions">
+    <div class="row">
+    <%= Enum.map(@list, fn(item) ->%>
+      <input type="checkbox" id="<%= item %> " name="<%= item %> "
+            >
+      <label for="<%= item %> "><%= item %> </label>
+      <% end) %>
+    </div>
+    </form>
+    <div>
+            <%= Enum.map(@champions, fn(row)-> %>
+                <img src="http://ddragon.leagueoflegends.com/cdn/11.15.1/img/champion/<%= row["image"]["full"] %>">
+          <% end ) %>
+    </div>
+  </div>
+</section>
