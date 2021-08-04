@@ -1,20 +1,48 @@
 <section class="row">
   <div class="column">
+
     <h2>Champions</h2>
-    <input type="text" placeholder="Search for a Champion">
-    <form phx-change="filter_champions">
+    <form phx-change="search">
+      <input type="text" name="q" phx-debounce="300" placeholder="Search for a Champion">
+    </form>
+    <form phx-change="show_champs">
     <div class="row">
-    <%= Enum.map(@list, fn(item) ->%>
-      <input type="checkbox" id="<%= item %> " name="<%= item %> "
-            >
-      <label for="<%= item %> "><%= item %> </label>
+      <%= Enum.map(@list, fn( item) -> %>
+      <%# <%= IO.inspect(@list) %>
+        <label for="<%= item %>"><%= item %></label>
+        <input type="hidden" name="<%= item %>" value="false">
+        <input type="checkbox" id="<%= item %>" name="<%= item %>" value= "true"  <%= checked?(@show_champs[item]) %>>
       <% end) %>
+
     </div>
     </form>
     <div>
-            <%= Enum.map(@champions, fn(row)-> %>
-                <img src="http://ddragon.leagueoflegends.com/cdn/11.15.1/img/champion/<%= row["image"]["full"] %>">
-          <% end ) %>
+
+    <%= if (@status == "all" ) do%>
+      <%= Enum.map(@champions, fn(row)-> %>
+        <img src="http://ddragon.leagueoflegends.com/cdn/11.15.1/img/champion/<%= row["image"]["full"]%>">
+      <% end ) %>
+    <% end %>
+
+    <%=  if (@status == "search" ) do %>
+      <%= Enum.map(@searched_champs, fn(row)-> %>
+        <img src="http://ddragon.leagueoflegends.com/cdn/11.15.1/img/champion/<%= row["image"]["full"]%>">
+      <% end ) %>
+    <% end %>
+
+    <%=  if  (@status == "filter" ) do %>
+      <%= if( Enum.empty?(@show_champs) == true) do%>
+        <%= Enum.map(@champions, fn(row)-> %>
+          <img src="http://ddragon.leagueoflegends.com/cdn/11.15.1/img/champion/<%= row["image"]["full"]%>">
+        <% end ) %>
+        <% else %>
+        <%= Enum.map(@filtered_champs, fn(row)-> %>
+          <img src="http://ddragon.leagueoflegends.com/cdn/11.15.1/img/champion/<%= row["image"]["full"]%>">
+        <% end ) %>
+    <% end %>
+
+    <% end %>
+
     </div>
   </div>
 </section>
