@@ -1,3 +1,4 @@
 <div class="phx-hero">
-<h2>Hello World, from <%= @messenger %> !</h2>
+<h2>Mais enfin, monsieur <%= String.upcase(@messenger) %>, pas avec votre poncho !
+<br>Je vais chercher des serpillières !</h2>
 </div>
