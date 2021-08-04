@@ -17,7 +17,6 @@ defmodule MyAppWeb.PageLive do
     list = Map.keys(show_champs)
     checked_champ = Enum.filter(show_champs, fn value -> value == "true" end)|> Enum.into(%{})
     status = "all"
-IO.inspect(checked_champ)
 
     {:ok, assign(socket, champions: champs, show_champs: checked_champ,  list: list, status: status)}
   end
@@ -26,20 +25,15 @@ def handle_event("show_champs", checked_list, socket) do
 checked_champ = Enum.filter(checked_list, fn { _key, value} -> value == "true" end)|> Enum.into(%{})
 champs = Characters.fetch_characters()["champions"]
 filtered_champs = Enum.filter(champs, fn champ -> champ["tags"] == (Map.keys(checked_champ)) end)
-IO.inspect(checked_champ)
 status = "filter"
 
 {:noreply, assign(socket, show_champs: checked_champ, filtered_champs: filtered_champs, status: status)}
 end
 
 def handle_event("search",  %{"q" => search}, socket) do
-  # IO.inspect(search)
   champs = Characters.fetch_characters()["champions"]
   searched_champs = Enum.filter(champs, fn (champ) -> String.contains?(String.downcase(champ["id"]), String.downcase(search)) end)
-  # IO.inspect(searched_champs)
-
   status = "search"
-
   {:noreply, assign(socket, searched_champs: searched_champs, status: status)}
 end
 end
