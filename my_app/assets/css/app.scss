@@ -1,6 +1,10 @@
 /* This file is for your main application css. */
 @import "./phoenix.css";
 
+* {
+  margin: unset;
+  padding: unset;
+}
 /* Alerts and form errors */
 .alert {
   padding: 15px;
@@ -23,6 +27,15 @@
   background-color: #f2dede;
   border-color: #ebccd1;
 }
+header {
+  .phx-logo {
+    margin: unset;
+    img {
+      width: 100vw;
+      max-width: unset;
+    }
+  }
+}
 .alert p {
   margin-bottom: 0;
 }
@@ -34,10 +47,45 @@
   display: block;
   margin: -1rem 0 2rem;
 }
-nav .row{
+nav .row {
   justify-content: space-evenly;
-  a{
+  a {
     color: rgb(63, 63, 63);
-font-size: 20px;
+    font-size: 20px;
+  }
+}
+
+.row .box {
+  justify-content: space-evenly;
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+.container {
+  margin: unset;
+  padding: unset;
+}
+
+section.container.image {
+  width: 100vw;
+  max-width: unset;
+}
+
+main {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
+.champion {
+  width: 70vw;
+  h2 {
+    font-size: 8em;
+  }
+  img{
+    width: 5vw;
   }
 }
